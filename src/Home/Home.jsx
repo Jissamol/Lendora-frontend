@@ -1,9 +1,10 @@
-
+import Navbar from './Navbar.jsx';
 function Home() {
     return (
         <>
+            <Navbar />
             <div style={{ color: 'black', fontSize: '30px', textAlign: 'center', marginTop: '20px' }}>
-                Welcome to the Home Page
+                Welcome to the Home Page 
             </div>
 
             <div>
@@ -23,7 +24,7 @@ function Home() {
                     </tbody>
                 </table>
             </div>
-        </>
+        </>     
     );
 }
 
