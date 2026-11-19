@@ -29,8 +29,8 @@ function Login() {
                 throw new Error(data.detail || "Unable to log in with those details.");
             }
 
-            localStorage.setItem("accessToken", data.access);
-            localStorage.setItem("refreshToken", data.refresh);
+            localStorage.setItem("accessToken", data.access_token);
+            localStorage.setItem("refreshToken", data.refresh_token);
             localStorage.setItem("userRole", data.role);
             navigate(data.role === "lender" ? "/lender-portal" : "/borrower-portal");
         } catch (requestError) {

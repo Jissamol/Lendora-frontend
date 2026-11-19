@@ -1,4 +1,6 @@
+import { useEffect, useState } from "react";
 import { Link, Navigate, useNavigate } from "react-router-dom";
+import { authFetch, logout } from "../auth/auth.js";
 import "./Portal.css";
 
 const PORTAL_CONTENT = {
@@ -14,6 +16,19 @@ const PORTAL_CONTENT = {
 
 function Portal({ role }) {
     const navigate = useNavigate();
+    const [user, setUser] = useState(null);
+
+    useEffect(() => {
+        authFetch("/api/auth/me/")
+            .then((response) => {
+                if (!response.ok) throw new Error("Session expired");
+                return response.json();
+            })
+            .then(setUser)
+            .catch(() => {
+                navigate("/login");
+            });
+    }, [navigate]);
 
     if (!localStorage.getItem("accessToken") || localStorage.getItem("userRole") !== role) {
         return <Navigate to="/login" replace />;
@@ -21,10 +36,8 @@ function Portal({ role }) {
 
     const content = PORTAL_CONTENT[role];
 
-    function handleLogout() {
-        localStorage.removeItem("accessToken");
-        localStorage.removeItem("refreshToken");
-        localStorage.removeItem("userRole");
+    async function handleLogout() {
+        await logout();
         navigate("/login");
     }
 
@@ -43,6 +56,7 @@ function Portal({ role }) {
                 <p className="auth-eyebrow">Welcome to Lendora</p>
                 <h1>{content.title}</h1>
                 <p>{content.description}</p>
+                {user && <p>Signed in as {user.email}</p>}
             </section>
         </main>
     );
