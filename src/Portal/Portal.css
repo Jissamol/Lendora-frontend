@@ -1,0 +1,49 @@
+.portal-page {
+    min-height: 100vh;
+    background: #f7f8f3;
+}
+
+.portal-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px 7%;
+    border-bottom: 1px solid #e8eee8;
+    background: #fff;
+}
+
+.portal-header .auth-logo {
+    margin: 0;
+}
+
+.portal-logout {
+    padding: 10px 16px;
+    border: 1px solid #d5dfd6;
+    border-radius: 9px;
+    background: #fff;
+    color: #244635;
+    cursor: pointer;
+    font: inherit;
+    font-size: 14px;
+    font-weight: 650;
+}
+
+.portal-content {
+    width: min(100% - 40px, 900px);
+    margin: 0 auto;
+    padding: 72px 0;
+}
+
+.portal-content h1 {
+    margin: 0 0 12px;
+    color: #173a2b;
+    font-size: clamp(32px, 6vw, 48px);
+    letter-spacing: -1.5px;
+}
+
+.portal-content > p:last-child {
+    margin: 0;
+    color: #64746a;
+    font-size: 16px;
+    line-height: 1.7;
+}
