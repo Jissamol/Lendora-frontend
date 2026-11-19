@@ -1,71 +1,78 @@
 
 import Navbar from "./Navbar.jsx";
 import "./Home.css";
+import { Link } from "react-router-dom";
 
 function Home() {
     return (
-        <>
+        <div className="home-page">
             <Navbar />
 
             <main>
-                {/* Hero Section */}
                 <section className="hero">
-                    <video
-                        className="hero-video"
-                        autoPlay
-                        muted
-                        loop
-                        playsInline
-                        aria-hidden="true"
-                    >
-                        <source src="/videos/homepage.mp4" type="video/mp4" />
-                    </video>
                     <div className="hero-content">
                         <span className="hero-badge">
-                            🌿 Share More, Waste Less
+                            Share more, waste less
                         </span>
 
                         <h1>
-                            Why Buy When
+                            Why buy when
                             <br />
-                            You Can <span>Borrow?</span>
+                            you can <span>borrow?</span>
                         </h1>
 
                         <p>
-                            Discover useful resources around you.
-                            Share what you own, borrow what you need
-                            and build a sustainable community together.
+                            Find what you need from people nearby. Share more,
+                            spend less, and build a stronger community.
                         </p>
 
                         <div className="hero-buttons">
-                            <a href="#resources" className="primary-btn">
-                                Explore Resources →
-                            </a>
-
-                            <a href="/register" className="secondary-btn">
-                                Start Sharing
-                            </a>
+                            <Link to="/login" className="primary-btn">
+                                Explore resources <span aria-hidden="true">→</span>
+                            </Link>
+                            <Link to="/login" className="secondary-btn">
+                                Start sharing
+                            </Link>
                         </div>
 
                         <div className="hero-stats">
                             <div>
-                                <h3>500+</h3>
+                                <strong>500+</strong>
                                 <span>Resources</span>
                             </div>
                             <div>
-                                <h3>300+</h3>
-                                <span>Community Members</span>
+                                <strong>300+</strong>
+                                <span>Community members</span>
                             </div>
                             <div>
-                                <h3>100%</h3>
-                                <span>Sharing Spirit</span>
+                                <strong>100%</strong>
+                                <span>Sharing spirit</span>
                             </div>
                         </div>
                     </div>
 
+                    <div className="hero-media">
+                        <video
+                            className="hero-video"
+                            autoPlay
+                            muted
+                            loop
+                            playsInline
+                            aria-label="Neighbors sharing items in their community"
+                        >
+                            <source src="/videos/homepage.mp4" type="video/mp4" />
+                        </video>
+                        <div className="media-label">
+                            <span className="media-label-icon" aria-hidden="true">↗</span>
+                            <span>
+                                <strong>Good things grow together</strong>
+                                <small>Share locally. Live sustainably.</small>
+                            </span>
+                        </div>
+                    </div>
                 </section>
             </main>
-        </>
+        </div>
     );
 }
 
